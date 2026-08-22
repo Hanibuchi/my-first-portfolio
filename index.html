@@ -1,82 +1,42 @@
 <!DOCTYPE html>
 <!-- ====================================================================
-     技育プロジェクト ミニカンファレンス 2026.08
-     ポートフォリオ テンプレート（index.html）
-
-     ▼ 作品を並べて見せる、個人のポートフォリオサイトです
-     ▼ ファイルは index.html 1 枚 ＋ images フォルダだけ
-     ▼ 【ここを変える】【変更】で検索（Ctrl + F / Cmd + F）すると、
-        いじれる場所が全部出てきます
-     ▼ この灰色の説明文はコメントです。画面には出ません
-
-     【ファイルの構造】全部おなじ場所に並べます（フォルダは作りません）
-       index.html    ← このファイル
-       profile.jpg   ← プロフィール写真
-       work1.jpg     ← 作品 1 の画像
-       work2.jpg     ← 作品 2 の画像
-       work3.jpg     ← 作品 3 の画像
-       ogp.jpg       ← SNS シェア用のサムネイル
-
-       ※ フォルダを作らないのは、GitHub にアップロードするときに
-          「全部まとめて選んでドラッグ＆ドロップ」できるようにするためです
-
-     【中身の構造】4 つのエリアが 1 枚に同居しています
-       1. head エリア   … タイトル・SNS 設定
-       2. style エリア  … 見た目（CSS）
-       3. body エリア   … 中身（HTML）
-       4. script エリア … 動き（JavaScript）
+     ポートフォリオ（index.html）
      ==================================================================== -->
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- 【ここを変える①】ブラウザのタブに出る文字 -->
-  <title>技育 太郎 | ポートフォリオ</title>
+  <title>埴淵 幸都（ハニテック） | ポートフォリオ</title>
 
-  <!-- 【ここを変える②】検索結果に出る説明文（80〜120 文字くらい） -->
-  <meta name="description" content="技育 太郎のポートフォリオサイト。つくったもの、できること、これまでの活動をまとめています。" />
+  <meta name="description" content="埴淵 幸都（Kouto Hanibuchi）のポートフォリオ。神戸大学4年（2027年4月より大阪大学大学院 情報科学研究科進学予定）。iOSアプリ・Unityゲーム開発、Python/TypeScriptによるWeb・デスクトップアプリの制作物を掲載しています。" />
 
-  <!-- 【ここを変える③】SNS でシェアしたときのサムネイル（OGP）
-       og:image は公開後に「https://自分のURL/ogp.jpg」のような
-       完全なアドレスに書き換えます（セッション③） -->
-  <meta property="og:title" content="技育 太郎 | ポートフォリオ" />
+  <meta property="og:title" content="埴淵 幸都（ハニテック） | ポートフォリオ" />
   <meta property="og:description" content="つくったものと、これまでのこと。" />
   <meta property="og:image" content="ogp.jpg" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
-
 
 <style>
 /* ====================================================================
    ここから下が「見た目」の設定（CSS）です
    ==================================================================== */
 
-
-/* --------------------------------------------------------------------
-   ① テーマ設定（まずはここだけ変えてみる）
-   この 1 か所を変えるだけで、サイト全体の雰囲気が変わります
-   -------------------------------------------------------------------- */
 :root {
-  --main-color: #0e9594;   /* 【変更①】メインの色（見出し・ボタン）例) #6c5ce7 #e8590c */
-  --dark-color: #1f2b33;   /* 【変更②】濃い色（見出し文字・フッター） */
-  --text-color: #333c42;   /* 【変更③】本文の文字色 */
-  --sub-color:  #7b8794;   /* 【変更④】補助テキストの色 */
-  --bg-color:   #fbfcfc;   /* 【変更⑤】背景の色 */
-  --soft-color: #f1f7f7;   /* 【変更⑥】薄い背景（セクションの色替え） */
+  --main-color: #0e9594;   /* メインの色 */
+  --dark-color: #1f2b33;   /* 濃い色 */
+  --text-color: #333c42;   /* 本文の文字色 */
+  --sub-color:  #7b8794;   /* 補助テキストの色 */
+  --bg-color:   #fbfcfc;   /* 背景の色 */
+  --soft-color: #f1f7f7;   /* 薄い背景 */
 
-  --radius: 14px;          /* 【変更⑦】角の丸み。0 で四角 */
-  --max-width: 940px;      /* 【変更⑧】コンテンツの最大幅 */
+  --radius: 14px;          /* 角の丸み */
+  --max-width: 940px;      /* コンテンツの最大幅 */
 }
 
-
-/* --------------------------------------------------------------------
-   ② 全体のベース
-   -------------------------------------------------------------------- */
 * { box-sizing: border-box; }
 
 body {
-  /* 【変更⑨】フォント。serif で明朝になる */
   font-family: system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif;
   color: var(--text-color);
   background: var(--bg-color);
@@ -88,37 +48,33 @@ img { max-width: 100%; display: block; }
 
 a { color: var(--main-color); }
 
-/* 中身を中央に寄せる共通の枠 */
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 24px;
 }
 
-section { padding: 84px 0; }        /* 【変更⑩】セクションの上下の余白 */
+section { padding: 84px 0; }
 .section-soft { background: var(--soft-color); }
 
 .section-label {
   color: var(--main-color);
   font-size: 12px;
   font-weight: bold;
-  letter-spacing: 0.2em;    /* 【変更⑪】英字の字間 */
+  letter-spacing: 0.2em;
   margin: 0 0 6px;
 }
 
 .section-title {
-  font-size: 27px;          /* 【変更⑫】セクション見出しの文字サイズ */
+  font-size: 27px;
   color: var(--dark-color);
   margin: 0 0 36px;
   line-height: 1.5;
 }
 
-
-/* --------------------------------------------------------------------
-   ③ ヘッダー（上に固定されるメニュー）
-   -------------------------------------------------------------------- */
+/* ヘッダー */
 header {
-  position: sticky;          /* 【変更⑬】static にすると固定されなくなる */
+  position: sticky;
   top: 0;
   z-index: 100;
   background: rgba(251, 252, 252, 0.9);
@@ -166,24 +122,17 @@ header {
   color: var(--dark-color);
 }
 
-
-/* --------------------------------------------------------------------
-   ④ ヒーロー（トップの自己紹介）
-   写真ではなく、やわらかい色の背景にしています
-   -------------------------------------------------------------------- */
+/* ヒーロー */
 .hero {
-  /* 【変更⑭】背景のグラデーション。2 色を変えると印象が大きく変わる
-     写真にしたい場合はこの 1 行を次のように書き換える：
-     background: url("hero.jpg") center/cover; */
   background: linear-gradient(160deg, var(--soft-color) 0%, #ffffff 70%);
   padding: 76px 0 68px;
   text-align: center;
 }
 
 .hero img {
-  width: 148px;              /* 【変更⑮】プロフィール写真の大きさ */
+  width: 148px;
   height: 148px;
-  border-radius: 50%;        /* 【変更⑯】50% で丸、0 で四角、20px で角丸 */
+  border-radius: 50%;
   object-fit: cover;
   margin: 0 auto 22px;
   border: 5px solid #fff;
@@ -191,7 +140,7 @@ header {
 }
 
 .hero h1 {
-  font-size: 34px;           /* 【変更⑰】名前の大きさ */
+  font-size: 34px;
   color: var(--dark-color);
   margin: 0 0 6px;
   line-height: 1.4;
@@ -206,15 +155,12 @@ header {
 
 .hero .lead {
   font-size: 16px;
-  max-width: 560px;
+  max-width: 600px;
   margin: 0 auto 30px;
   color: var(--text-color);
 }
 
-
-/* --------------------------------------------------------------------
-   ⑤ ボタン
-   -------------------------------------------------------------------- */
+/* ボタン */
 .btn {
   display: inline-block;
   background: var(--main-color);
@@ -223,7 +169,7 @@ header {
   font-weight: bold;
   font-size: 14px;
   padding: 12px 30px;
-  border-radius: 999px;      /* 【変更⑱】999px でカプセル型、4px で角ばった形 */
+  border-radius: 999px;
   transition: transform 0.2s, opacity 0.2s;
 }
 
@@ -235,13 +181,10 @@ header {
   border: 1.5px solid var(--main-color);
 }
 
-
-/* --------------------------------------------------------------------
-   ⑥ ABOUT（自己紹介の文章 + プロフィール項目）
-   -------------------------------------------------------------------- */
+/* ABOUT */
 .about-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;   /* 【変更⑲】1fr 1fr にすると半々になる */
+  grid-template-columns: 1.4fr 1fr;
   gap: 44px;
 }
 
@@ -261,13 +204,9 @@ header {
   min-width: 74px;
 }
 
-
-/* --------------------------------------------------------------------
-   ⑦ WORKS（作品のカード）
-   -------------------------------------------------------------------- */
+/* WORKS */
 .work-grid {
   display: grid;
-  /* 【変更⑳】repeat(3, 1fr) を repeat(2, 1fr) にすると 2 列になる */
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
@@ -275,7 +214,7 @@ header {
 .work-card {
   background: #fff;
   border-radius: var(--radius);
-  overflow: hidden;          /* 画像の角を丸く切り抜くために必要 */
+  overflow: hidden;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
   transition: transform 0.25s, box-shadow 0.25s;
   display: block;
@@ -284,13 +223,13 @@ header {
 }
 
 .work-card:hover {
-  transform: translateY(-6px);   /* 【変更㉑】浮き上がる高さ */
+  transform: translateY(-6px);
   box-shadow: 0 14px 32px rgba(0, 0, 0, 0.11);
 }
 
 .work-card img {
   width: 100%;
-  aspect-ratio: 4 / 3;       /* 画像の縦横比を統一。1/1 や 16/9 でもOK */
+  aspect-ratio: 4 / 3;
   object-fit: cover;
 }
 
@@ -311,10 +250,7 @@ header {
   margin-bottom: 8px;
 }
 
-
-/* --------------------------------------------------------------------
-   ⑧ SKILLS（できること）
-   -------------------------------------------------------------------- */
+/* SKILLS */
 .skill-list {
   list-style: none;
   display: flex;
@@ -335,10 +271,7 @@ header {
 
 .skill-note { font-size: 14px; color: var(--sub-color); margin: 0; }
 
-
-/* --------------------------------------------------------------------
-   ⑨ TIMELINE（これまでのこと）
-   -------------------------------------------------------------------- */
+/* TIMELINE */
 .timeline { list-style: none; padding: 0; margin: 0; }
 
 .timeline li {
@@ -357,10 +290,7 @@ header {
 
 .timeline .event { font-size: 15px; }
 
-
-/* --------------------------------------------------------------------
-   ⑩ CONTACT
-   -------------------------------------------------------------------- */
+/* CONTACT */
 .contact { text-align: center; }
 
 .contact p { max-width: 540px; margin: 0 auto 26px; color: var(--sub-color); }
@@ -380,10 +310,7 @@ header {
 
 .sns-links a:hover { background: var(--main-color); color: #fff; }
 
-
-/* --------------------------------------------------------------------
-   ⑪ フッター
-   -------------------------------------------------------------------- */
+/* フッター */
 footer {
   background: var(--dark-color);
   color: rgba(255, 255, 255, 0.8);
@@ -392,10 +319,7 @@ footer {
   font-size: 13px;
 }
 
-
-/* --------------------------------------------------------------------
-   ⑫ スクロールでふわっと出てくる演出
-   -------------------------------------------------------------------- */
+/* スクロールアニメーション */
 .reveal {
   opacity: 0;
   transform: translateY(22px);
@@ -404,10 +328,7 @@ footer {
 
 .reveal.is-visible { opacity: 1; transform: none; }
 
-
-/* --------------------------------------------------------------------
-   ⑬ スマホ用の調整（横幅 820px 以下）
-   -------------------------------------------------------------------- */
+/* レスポンシブ */
 @media (max-width: 820px) {
   section { padding: 58px 0; }
   .hero { padding: 54px 0 48px; }
@@ -417,7 +338,6 @@ footer {
   .work-grid { grid-template-columns: 1fr; }
   .menu-btn { display: block; }
 
-  /* スマホではメニューを隠し、ボタンを押すと出てくる */
   .nav {
     display: none;
     position: absolute;
@@ -439,15 +359,11 @@ footer {
 
 <body>
 
-<!-- ====================================================================
-     ヘッダー（上に固定されるメニュー）
-     ==================================================================== -->
+<!-- ヘッダー -->
 <header>
   <div class="header-inner">
-    <!-- 【ここを変える④】左上に出る自分の名前 -->
-    <a class="logo" href="#top">技育 太郎</a>
+    <a class="logo" href="#top">Kouto Hanibuchi</a>
 
-    <!-- 【ここを変える⑤】メニュー。href="#about" は同じページの id へジャンプする印 -->
     <nav class="nav" id="nav">
       <a href="#about">About</a>
       <a href="#works">Works</a>
@@ -460,27 +376,17 @@ footer {
 </header>
 
 
-<!-- ====================================================================
-     ヒーロー（トップの自己紹介）
-     ==================================================================== -->
+<!-- ヒーロー -->
 <div class="hero" id="top">
   <div class="container">
-    <!-- 【ここを変える⑥】プロフィール写真
-         index.html と同じ場所にある profile.jpg を、
-         自分の画像で「同じ名前のまま」上書きするだけで差し替わります
-         （HTML はさわらなくて OK） -->
-    <img src="profile.jpg" alt="プロフィール写真" />
+    <img src="profile.jpg" alt="埴淵 幸都のプロフィール写真" />
 
-    <!-- 【ここを変える⑦】名前 -->
-    <h1>技育 太郎</h1>
+    <h1>埴淵 幸都（ハニテック）</h1>
+    <p class="roman">KOUTO HANIBUCHI</p>
 
-    <!-- 【ここを変える⑧】ローマ字表記。いらなければ行ごと消す -->
-    <p class="roman">TARO GIIKU</p>
-
-    <!-- 【ここを変える⑨】ひとこと自己紹介 -->
     <p class="lead">
-      ◯◯大学 1 年。Web サイトとアプリをつくっています。<br />
-      手を動かしながら学ぶのが好きで、思いついたものはとりあえず形にしています。
+      神戸大学 工学部 4年（2027年4月より大阪大学大学院 情報科学研究科 進学予定）。<br />
+      iOSアプリやUnityゲームの個人開発から、Python・TypeScriptによるWeb/デスクトップツール開発まで、手を動かして価値を生み出すものづくりを行っています。
     </p>
 
     <a class="btn" href="#works">つくったものを見る</a>
@@ -489,9 +395,7 @@ footer {
 </div>
 
 
-<!-- ====================================================================
-     ABOUT（自己紹介 + プロフィール項目）
-     ==================================================================== -->
+<!-- ABOUT -->
 <section id="about">
   <div class="container reveal">
     <p class="section-label">ABOUT</p>
@@ -499,34 +403,27 @@ footer {
 
     <div class="about-grid">
       <div>
-        <!-- 【ここを変える⑩】自己紹介の本文。段落を増やすときは <p>…</p> を足す -->
         <p>
-          はじめまして。プログラミングを始めて 1 年の大学生です。
-          最初は「動くだけ」で嬉しかったのが、今は「使う人がどう感じるか」まで考えるのが楽しくなってきました。
+          はじめまして。コンピュータサイエンスとソフトウェア開発を学んでいる大学4年生です。
+          ネットワークやエッジ・クラウド協調処理、ローカルAI活用といった基盤技術に関心を持っています。
         </p>
         <p>
-          身のまわりの小さな不便を、自分の手で解決するのが好きです。
-          つくったものはこのサイトにまとめています。気になるものがあればぜひ見てください。
+          UnityによるiOSゲームの企画・開発からApp Storeリリース、作業効率化のためのデスクトップツール開発、ハッカソンでのWebバックエンド構築まで、「思いついたアイデアをすばやく形にして動かす」ことを大切にしています。
         </p>
       </div>
 
-      <!-- 【ここを変える⑪】プロフィール項目。行を増やすときは <li>…</li> をコピー -->
       <ul class="profile-list">
-        <li><span class="key">所属</span><span>◯◯大学 ◯◯学部 1 年</span></li>
-        <li><span class="key">拠点</span><span>◯◯県</span></li>
-        <li><span class="key">興味</span><span>Web / アプリ開発 / UI デザイン</span></li>
-        <li><span class="key">趣味</span><span>音楽・カメラ・散歩</span></li>
-        <li><span class="key">目標</span><span>つくったものを、人に使ってもらうこと</span></li>
+        <li><span class="key">所属</span><span>神戸大 工学部4年 → 大阪大学院 情報科学研究科進学予定</span></li>
+        <li><span class="key">資格・語学</span><span>応用情報技術者 (AP) / TOEIC 850点</span></li>
+        <li><span class="key">関心分野</span><span>iOS・ゲーム開発 / エッジ・AI / ツール開発 / ネットワーク</span></li>
+        <li><span class="key">趣味</span><span>個人ゲーム開発 / サイクリング / カラオケ</span></li>
       </ul>
     </div>
   </div>
 </section>
 
 
-<!-- ====================================================================
-     WORKS（つくったもの）
-     カードを増やすときは <a class="work-card"> … </a> をまるごとコピー
-     ==================================================================== -->
+<!-- WORKS -->
 <section id="works" class="section-soft">
   <div class="container reveal">
     <p class="section-label">WORKS</p>
@@ -534,33 +431,63 @@ footer {
 
     <div class="work-grid">
 
-      <!-- 【ここを変える⑫】カード 1 枚目 ここから
-           href="#" を作品の URL（GitHub やサイト）に変えるとリンクになる -->
-      <a class="work-card" href="#">
-        <img src="work1.jpg" alt="作品 1 のスクリーンショット" />
+      <!-- 作品 1：マジックビルダー（優先表示①） -->
+      <a class="work-card" href="https://github.com/Hanibuchi" target="_blank" rel="noopener">
+        <img src="work1.jpg" alt="マジックビルダーのスクリーンショット" />
         <div class="work-body">
-          <span class="work-tag">Web サイト</span>
-          <h3>サークル紹介サイト</h3>
-          <p>活動紹介とメンバー募集の 1 ページサイト。デザインから公開まで担当。</p>
-        </div>
-      </a>
-      <!-- 【ここを変える⑫】カード 1 枚目 ここまで -->
-
-      <a class="work-card" href="#">
-        <img src="work2.jpg" alt="作品 2 のスクリーンショット" />
-        <div class="work-body">
-          <span class="work-tag">個人開発</span>
-          <h3>やることリストアプリ</h3>
-          <p>毎日使うものを自分でつくってみた 1 作目。通知機能つき。</p>
+          <span class="work-tag">iOS App / Unity</span>
+          <h3>マジックビルダー (Magic Builder)</h3>
+          <p>Unity + C#で開発したiOS向けゲームアプリ。App Store Connectへのリリース、Xcodeでの実機ビルド・最適化、紹介用LPの構築まで一貫して実施。</p>
         </div>
       </a>
 
-      <a class="work-card" href="#">
-        <img src="work3.jpg" alt="作品 3 の画像" />
+      <!-- 作品 2：ホワイトボードを消すゲーム（優先表示②） -->
+      <a class="work-card" href="https://github.com/Hanibuchi" target="_blank" rel="noopener">
+        <img src="work2.jpg" alt="ホワイトボードを消すゲームのスクリーンショット" />
         <div class="work-body">
-          <span class="work-tag">デザイン</span>
-          <h3>イベントのポスター制作</h3>
-          <p>ポスターと SNS 用バナーをまとめてデザイン。Figma を使用。</p>
+          <span class="work-tag">Unity / Game</span>
+          <h3>ホワイトボードを消すゲーム</h3>
+          <p>ホワイトボードの文字やインクを消していく心地よい操作感を追求した2Dアクションパズル。当たり判定と消去処理のロジックを実装。</p>
+        </div>
+      </a>
+
+      <!-- 作品 3：ズレナビ -->
+      <a class="work-card" href="https://github.com/Hanibuchi" target="_blank" rel="noopener">
+        <img src="work3.jpg" alt="ズレナビのスクリーンショット" />
+        <div class="work-body">
+          <span class="work-tag">Desktop App / AI</span>
+          <h3>ズレナビ (Zurenavi)</h3>
+          <p>Electron + Python + ローカルVLM（視覚言語モデル）を活用し、作業画面を解析してタスクの逸脱を検知・ナビゲートする生産性向上ツール。</p>
+        </div>
+      </a>
+
+      <!-- 作品 4：竜宮城から戻ると死の灰が降っていた -->
+      <a class="work-card" href="https://github.com/Hanibuchi" target="_blank" rel="noopener">
+        <img src="work1.jpg" alt="竜宮城から戻ると死の灰が降っていたのスクリーンショット" />
+        <div class="work-body">
+          <span class="work-tag">Unity / Action</span>
+          <h3>竜宮城から戻ると死の灰が降っていた</h3>
+          <p>Unity1weekにて7日間で開発・公開した2Dメトロイドヴァニアアクション。マップ探索、敵AI、ボス戦闘ロジックを短期間で完成。</p>
+        </div>
+      </a>
+
+      <!-- 作品 5：ハッカソン Webアプリ -->
+      <a class="work-card" href="https://github.com/Hanibuchi" target="_blank" rel="noopener">
+        <img src="work2.jpg" alt="Webアプリケーションのスクリーンショット" />
+        <div class="work-body">
+          <span class="work-tag">Web / Hackathon</span>
+          <h3>スマートタスク・家計支援 Webアプリ</h3>
+          <p>FastAPI + Next.jsによるハッカソン開発。レシートOCR解析、価格比較ロジック、Google Tasks API連携などバックエンド全般を担当。</p>
+        </div>
+      </a>
+
+      <!-- 作品 6：3Dシミュレーションゲーム -->
+      <a class="work-card" href="https://github.com/Hanibuchi" target="_blank" rel="noopener">
+        <img src="work3.jpg" alt="3Dシミュレーションゲームのスクリーンショット" />
+        <div class="work-body">
+          <span class="work-tag">Unity / 3D</span>
+          <h3>くまの寿司職人シミュレーション</h3>
+          <p>1週間のGame Jamで制作した3Dシミュレーションゲーム。注文管理ステートマシン、物理ベースのアクション、UIアニメーションを実装。</p>
         </div>
       </a>
 
@@ -569,96 +496,75 @@ footer {
 </section>
 
 
-<!-- ====================================================================
-     SKILLS（できること）
-     ==================================================================== -->
+<!-- SKILLS -->
 <section id="skills">
   <div class="container reveal">
     <p class="section-label">SKILLS</p>
-    <h2 class="section-title">できること・勉強中のこと</h2>
+    <h2 class="section-title">できること・技術スタック</h2>
 
-    <!-- 【ここを変える⑬】タグ。行をコピーすれば増やせる -->
     <ul class="skill-list">
-      <li>HTML</li>
-      <li>CSS</li>
-      <li>JavaScript</li>
-      <li>Git / GitHub</li>
-      <li>Figma</li>
-      <li>Swift（勉強中）</li>
+      <li>C# (Unity 2D/3D)</li>
+      <li>iOS App Development (Xcode)</li>
+      <li>Python (FastAPI / Django)</li>
+      <li>TypeScript / JavaScript</li>
+      <li>Electron / Next.js</li>
+      <li>Git / GitHub / uv</li>
+      <li>SQL</li>
+      <li>応用情報技術者 (AP)</li>
+      <li>TOEIC 850点</li>
     </ul>
 
-    <!-- 【ここを変える⑭】補足の一文 -->
     <p class="skill-note">
-      いまは React と TypeScript を勉強中です。分からないことは AI に聞きながら、手を動かして覚えるようにしています。
+      Unityを用いた2D/3Dゲーム開発およびiOSアプリのリリース経験があり、PythonやTypeScriptによるWeb/デスクトップアプリ開発、ローカルVLMやエッジ環境でのAI処理検証を行っています。
     </p>
   </div>
 </section>
 
 
-<!-- ====================================================================
-     TIMELINE（これまでのこと）
-     行を増やすときは <li> … </li> をコピーして貼るだけ
-     ==================================================================== -->
+<!-- TIMELINE -->
 <section id="timeline" class="section-soft">
   <div class="container reveal">
     <p class="section-label">TIMELINE</p>
     <h2 class="section-title">これまでのこと</h2>
 
     <ul class="timeline">
-      <!-- 【ここを変える⑮】ここから -->
-      <li><span class="year">2026.08</span><span class="event">このポートフォリオサイトを公開。</span></li>
-      <li><span class="year">2026.05</span><span class="event">初めてのハッカソンに出場。チームで作品を完成させる。</span></li>
-      <li><span class="year">2026.03</span><span class="event">初めてつくったアプリを公開。</span></li>
-      <li><span class="year">2025.04</span><span class="event">大学入学。プログラミングを始める。</span></li>
-      <!-- 【ここを変える⑮】ここまで -->
+      <li><span class="year">2027.04</span><span class="event">大阪大学大学院 情報科学研究科 入学予定</span></li>
+      <li><span class="year">2026.05</span><span class="event">iOSアプリ「マジックビルダー」をApp Storeに向けてリリース・LP公開</span></li>
+      <li><span class="year">2026.04</span><span class="event">デスクトップアプリ「ズレナビ」開発 / チームハッカソンにてバックエンド担当</span></li>
+      <li><span class="year">2026.03</span><span class="event">Unity1weekにて2Dアクションゲーム「竜宮城から戻ると死の灰が降っていた」を制作・公開</span></li>
+      <li><span class="year">2025.09</span><span class="event">応用情報技術者試験（AP）合格</span></li>
+      <li><span class="year">2023.04</span><span class="event">神戸大学 工学部 情報知能工学科 入学</span></li>
     </ul>
   </div>
 </section>
 
 
-<!-- ====================================================================
-     CONTACT（連絡先）
-     ==================================================================== -->
+<!-- CONTACT -->
 <section id="contact" class="contact">
   <div class="container reveal">
     <p class="section-label">CONTACT</p>
     <h2 class="section-title">連絡先</h2>
 
-    <!-- 【ここを変える⑯】案内文 -->
-    <p>ご相談、一緒に何かつくりたい方、感想でも大歓迎です。<br />お気軽にご連絡ください。</p>
+    <p>開発や研究に関するお話、プロジェクトのお誘いなど大歓迎です。<br />お気軽に各SNSまたはメールよりご連絡ください。</p>
 
-    <!-- 【ここを変える⑰】メールアドレス。mailto: の後ろを自分のアドレスに -->
-    <a class="btn" href="mailto:hello@example.com">メールを送る</a>
+    <a class="btn" href="mailto:2335003t@gsuite.kobe-u.ac.jp">メールを送る</a>
 
-    <!-- 【ここを変える⑱】SNS リンク。使わない行は消して OK -->
     <div class="sns-links">
-      <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://x.com/" target="_blank" rel="noopener">X (Twitter)</a>
-      <a href="https://qiita.com/" target="_blank" rel="noopener">Qiita</a>
+      <a href="https://github.com/Hanibuchi" target="_blank" rel="noopener">GitHub (@Hanibuchi)</a>
+      <a href="https://x.com/hanitech8686" target="_blank" rel="noopener">X / Twitter (@hanitech8686)</a>
     </div>
   </div>
 </section>
 
 
-<!-- ====================================================================
-     フッター
-     ==================================================================== -->
+<!-- フッター -->
 <footer>
-  <!-- 【ここを変える⑲】フッターの名前。年は JavaScript が自動で入れます -->
-  <p>&copy; <span id="year"></span> 技育 太郎</p>
+  <p>&copy; <span id="year"></span> Kouto Hanibuchi</p>
 </footer>
 
 
 <script>
-/* ====================================================================
-   ここから下が「動き」の設定（JavaScript）です
-   ==================================================================== */
-
-
-// --------------------------------------------------------------------
-// ① スマホのメニュー開閉
-// ボタンが押されたら、メニューに is-open という目印を付け外しする
-// --------------------------------------------------------------------
+// スマホメニュー開閉
 const menuBtn = document.getElementById("menu-btn");
 const nav = document.getElementById("nav");
 
@@ -666,37 +572,26 @@ menuBtn.addEventListener("click", () => {
   nav.classList.toggle("is-open");
 });
 
-// メニューの項目を押したら、メニューを閉じる
 nav.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", () => nav.classList.remove("is-open"));
 });
 
-
-// --------------------------------------------------------------------
-// ② スクロールでふわっと表示する
-// 画面に入ってきた .reveal に is-visible という目印を付けています
-// 【変更㉒】演出をやめたいときは、style エリアの .reveal を消せば OK
-// --------------------------------------------------------------------
+// スクロールフェードイン
 const revealItems = document.querySelectorAll(".reveal");
 
 function checkReveal() {
   revealItems.forEach((el) => {
-    // 要素の上端が画面の下から 90% の位置まで来たら表示する
-    // 【変更㉓】0.9 を 0.7 にすると、もっと下までスクロールしてから出てくる
     if (el.getBoundingClientRect().top < window.innerHeight * 0.9) {
       el.classList.add("is-visible");
     }
   });
 }
 
-checkReveal();                                  // 最初に 1 回チェック
-window.addEventListener("scroll", checkReveal); // スクロールのたびにチェック
+checkReveal();
+window.addEventListener("scroll", checkReveal);
 window.addEventListener("resize", checkReveal);
 
-
-// --------------------------------------------------------------------
-// ③ メニューを押したときになめらかにスクロールする
-// --------------------------------------------------------------------
+// スムーズスクロール
 document.querySelectorAll('a[href^="#"]').forEach((link) => {
   link.addEventListener("click", (e) => {
     const target = document.querySelector(link.getAttribute("href"));
@@ -706,35 +601,8 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
   });
 });
 
-
-// --------------------------------------------------------------------
-// ④ フッターの年を自動で入れる（毎年書き換えなくて済む）
-// --------------------------------------------------------------------
+// コピーライトの年表示
 document.getElementById("year").textContent = new Date().getFullYear();
-
-
-/* ====================================================================
-   ▼ おまけ：やってみたい人向けの改造ネタ
-   行の先頭の // を消すと動きます
-   ==================================================================== */
-
-// 【改造ネタ 1】下にスクロールするとヘッダーに影を付ける
-// window.addEventListener("scroll", () => {
-//   const h = document.querySelector("header");
-//   h.style.boxShadow = window.scrollY > 10 ? "0 2px 14px rgba(0,0,0,.07)" : "none";
-// });
-
-// 【改造ネタ 2】ダークモードに切り替える
-//   まず body エリアのメニューに次のボタンを足す：
-//   <button id="theme-btn" class="btn btn-ghost">🌙</button>
-// document.getElementById("theme-btn").addEventListener("click", () => {
-//   const r = document.documentElement;
-//   const dark = r.style.getPropertyValue("--bg-color") === "#1b1f24";
-//   r.style.setProperty("--bg-color",   dark ? "#fbfcfc" : "#1b1f24");
-//   r.style.setProperty("--soft-color", dark ? "#f1f7f7" : "#242a31");
-//   r.style.setProperty("--text-color", dark ? "#333c42" : "#e8edf0");
-//   r.style.setProperty("--dark-color", dark ? "#1f2b33" : "#f5f8fa");
-// });
 </script>
 
 </body>
