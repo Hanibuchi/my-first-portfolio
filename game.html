@@ -25,10 +25,8 @@
     #game-status { position: absolute; z-index: 1; max-width: 430px; padding: 24px; color: #fff; text-align: center; }
     #game-status h2 { margin: 0 0 8px; font-size: 18px; }
     #game-status p { margin: 0; color: rgba(255, 255, 255, .78); font-size: 14px; }
-    .game-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 12px 18px; color: rgba(255, 255, 255, .7); font-size: 12px; }
-    .note { margin-top: 28px; padding: 18px 20px; border-left: 3px solid var(--main-color); background: var(--soft-color); font-size: 14px; }
     footer { padding: 28px 24px; color: rgba(255, 255, 255, .8); background: var(--dark-color); text-align: center; font-size: 13px; }
-    @media (max-width: 600px) { main { padding-top: 38px; } #unity-container { min-height: 240px; } .game-meta { display: block; } .game-meta span { display: block; } }
+    @media (max-width: 600px) { main { padding-top: 38px; } #unity-container { min-height: 240px; } }
   </style>
 </head>
 <body>
@@ -39,9 +37,7 @@
     <p class="intro">Unity WebGLで制作したゲームです。ゲーム画面をクリックしてお楽しみください。</p>
     <div class="game-shell">
       <div id="unity-container"><div id="game-status"><h2>ゲームを読み込んでいます</h2><p>初回の読み込みには少し時間がかかる場合があります。</p></div><canvas id="unity-canvas" tabindex="-1"></canvas></div>
-      <div class="game-meta"><span>Unity WebGL</span><span>読み込みが終わるまでページを閉じないでください</span></div>
     </div>
-    <div class="note"><strong>ゲームが表示されない場合</strong><br />`Build/` フォルダと `game.html` が正しい位置にあるか確認してください。登録方法は README の「Unity WebGLゲームを登録する」を参照してください。</div>
   </main>
   <footer>&copy; <span id="year"></span> Kouto Hanibuchi</footer>
   <script>
