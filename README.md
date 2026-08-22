@@ -12,6 +12,8 @@ work1.jpg     ← 作品 1（1000 × 750）
 work2.jpg     ← 作品 2（1000 × 750）
 work3.jpg     ← 作品 3（1000 × 750）
 ogp.jpg       ← SNS シェア用サムネイル（1200 × 630）
+game.html     ← Unity WebGLゲームの再生ページ
+Build/        ← Unityから出力したWebGLビルド（後述）
 ```
 
 **フォルダは作らず、全部同じ場所に並べています。**
@@ -22,6 +24,41 @@ GitHub にアップロードするときに「全部まとめて選んでドラ�
 
 HEADER（固定メニュー）／ HERO（写真・名前・ひとこと）／ ABOUT（自己紹介＋プロフィール項目）
 ／ WORKS（作品カード 3 枚）／ SKILLS（できること）／ TIMELINE（これまでのこと）／ CONTACT ／ FOOTER
+
+## Unity WebGLゲームを登録する
+
+`game.html` は、UnityのWebGLビルドを `Build/` フォルダに置くとブラウザでゲームを起動します。
+
+1. Unityで **File → Build Settings** を開き、Platformに **WebGL** を選んで **Switch Platform** を押す
+2. **Build** を押し、出力先をこのフォルダ内の `Build` にする
+3. Unityが出力した `*.loader.js`、`*.data`、`*.framework.js`、`*.wasm` を `Build/` の直下に置く
+4. `game.html` の `games` 設定に、ゲーム名・ビルドフォルダ・Unityの出力名を登録する
+5. `index.html` の対応するUnity作品カードを `game.html?game=登録したID` にする
+
+今回登録した `Build/whiteboard/` は `unityroom.loader.js` という出力名なので、ホワイトボードを消すゲーム用として設定済みです。圧縮出力の `.data.gz`、`.framework.js.gz`、`.wasm.gz` にも対応しています。
+
+#### `.gz` ビルドが起動しないとき
+
+`.gz` はサーバー側が `Content-Encoding: gzip` ヘッダーを付けて配信する必要があります。GitHub Pagesや `python3 -m http.server` ではこの設定が自動で付かないため、Unityの **Project Settings → Player → WebGL → Publishing Settings** で **Compression Format** を **Disabled** にして再ビルドするのが簡単です。再出力後、`game.html` のファイル名を `.data`、`.framework.js`、`.wasm`（末尾の `.gz` なし）に合わせてください。
+
+ゲームを複数登録する場合は、ゲームごとにフォルダを分けます。今回のように `Build/whiteboard/unityroom.loader.js` を置いた場合、設定は次のようにします。
+
+```javascript
+"whiteboard": {
+  title: "ホワイトボードを消すゲーム",
+  folder: "Build/whiteboard",
+  file: "unityroom",
+  product: "Whiteboard Game"
+}
+```
+
+カード側は `<a class="work-card" href="game.html?game=whiteboard">` のように、設定のIDと同じ値を指定します。これでカードごとに異なるビルドが起動します。現在は `Build/whiteboard/` のビルドだけがあるため、他3作品は対応するビルドを追加するまで「ビルド未登録」と表示されます。
+
+### 動作確認と公開
+
+HTMLファイルを直接開くと、ブラウザの制限でUnityが起動しないことがあります。ローカルでは、プロジェクトフォルダで `python3 -m http.server 8000` を実行し、`http://localhost:8000/game.html` を開いて確認します。GitHub Pagesでは `index.html`、`game.html`、`Build/` を同じリポジトリに含めて公開してください。
+
+WebGLビルドは容量が大きくなりやすいため、GitHubのファイルサイズ制限にも注意してください。大きなビルドはGit LFS、Unity Play、itch.ioなど別のホスティングに置き、`game.html` をそのページへのリンクに変更する方法もあります。
 
 ## 中身の構成
 

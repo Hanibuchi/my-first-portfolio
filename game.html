@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Magic Builder | Kouto Hanibuchi</title>
+  <meta name="description" content="Unity WebGLで制作したゲームをプレイできます。" />
+  <style>
+    :root { --main-color: #0e9594; --dark-color: #1f2b33; --text-color: #333c42; --sub-color: #7b8794; --bg-color: #fbfcfc; --soft-color: #f1f7f7; --max-width: 940px; }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--text-color); background: var(--bg-color); font-family: system-ui, -apple-system, "Hiragino Sans", "Noto Sans JP", sans-serif; line-height: 1.8; }
+    a { color: var(--main-color); }
+    header { border-bottom: 1px solid #e9eef0; background: rgba(251, 252, 252, .92); backdrop-filter: blur(8px); }
+    .header-inner, main { max-width: var(--max-width); margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+    .header-inner { min-height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { color: var(--dark-color); font-size: 17px; font-weight: bold; letter-spacing: .04em; text-decoration: none; }
+    .back-link { font-size: 14px; font-weight: bold; text-decoration: none; }
+    main { padding-top: 54px; padding-bottom: 70px; }
+    .eyebrow { margin: 0 0 5px; color: var(--main-color); font-size: 12px; font-weight: bold; letter-spacing: .2em; }
+    h1 { margin: 0; color: var(--dark-color); font-size: clamp(26px, 5vw, 38px); line-height: 1.35; }
+    .intro { margin: 12px 0 28px; color: var(--sub-color); }
+    .game-shell { overflow: hidden; border: 1px solid #dfe9ea; border-radius: 14px; background: #172329; box-shadow: 0 14px 34px rgba(31, 43, 51, .13); }
+    #unity-container { position: relative; width: 100%; aspect-ratio: 16 / 9; min-height: 320px; display: grid; place-items: center; }
+    #unity-canvas { width: 100%; height: 100%; display: block; background: #172329; }
+    #game-status { position: absolute; z-index: 1; max-width: 430px; padding: 24px; color: #fff; text-align: center; }
+    #game-status h2 { margin: 0 0 8px; font-size: 18px; }
+    #game-status p { margin: 0; color: rgba(255, 255, 255, .78); font-size: 14px; }
+    .game-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 12px 18px; color: rgba(255, 255, 255, .7); font-size: 12px; }
+    .note { margin-top: 28px; padding: 18px 20px; border-left: 3px solid var(--main-color); background: var(--soft-color); font-size: 14px; }
+    footer { padding: 28px 24px; color: rgba(255, 255, 255, .8); background: var(--dark-color); text-align: center; font-size: 13px; }
+    @media (max-width: 600px) { main { padding-top: 38px; } #unity-container { min-height: 240px; } .game-meta { display: block; } .game-meta span { display: block; } }
+  </style>
+</head>
+<body>
+  <header><div class="header-inner"><a class="logo" href="index.html">Kouto Hanibuchi</a><a class="back-link" href="index.html#works">作品一覧へ戻る</a></div></header>
+  <main>
+    <p class="eyebrow">WEB PLAY / UNITY</p>
+    <h1 id="game-title">ゲーム</h1>
+    <p class="intro">Unity WebGLで制作したゲームです。ゲーム画面をクリックしてお楽しみください。</p>
+    <div class="game-shell">
+      <div id="unity-container"><div id="game-status"><h2>ゲームを読み込んでいます</h2><p>初回の読み込みには少し時間がかかる場合があります。</p></div><canvas id="unity-canvas" tabindex="-1"></canvas></div>
+      <div class="game-meta"><span>Unity WebGL</span><span>読み込みが終わるまでページを閉じないでください</span></div>
+    </div>
+    <div class="note"><strong>ゲームが表示されない場合</strong><br />`Build/` フォルダと `game.html` が正しい位置にあるか確認してください。登録方法は README の「Unity WebGLゲームを登録する」を参照してください。</div>
+  </main>
+  <footer>&copy; <span id="year"></span> Kouto Hanibuchi</footer>
+  <script>
+    const gameId = new URLSearchParams(window.location.search).get("game") || "magic-builder";
+    const games = {
+      "magic-builder": { title: "マジックビルダー", folder: "Build", file: "unityroom", product: "Magic Builder" },
+      "whiteboard": { title: "ホワイトボードを消すゲーム", folder: "Build/whiteboard", file: "unityroom", product: "Whiteboard Game" },
+      "dragon-ash": { title: "竜宮城から戻ると死の灰が降っていた", folder: "Build/dragon-ash", file: "DragonAsh", product: "Dragon Ash" },
+      "sushi-bear": { title: "くまの寿司職人シミュレーション", folder: "Build/sushi-bear", file: "SushiBear", product: "Sushi Bear" }
+    };
+    const game = games[gameId] || games["magic-builder"];
+    const buildPath = game.folder;
+    const buildFile = game.file;
+    const loaderFile = `${buildFile}.loader.js`;
+    const config = { dataUrl: `${buildPath}/${buildFile}.data`, frameworkUrl: `${buildPath}/${buildFile}.framework.js`, codeUrl: `${buildPath}/${buildFile}.wasm`, streamingAssetsUrl: `${buildPath}/StreamingAssets`, companyName: "Kouto Hanibuchi", productName: game.product, productVersion: "1.0" };
+    document.getElementById("game-title").textContent = game.title;
+    const status = document.getElementById("game-status");
+    const canvas = document.getElementById("unity-canvas");
+    const loader = document.createElement("script");
+    loader.src = `${buildPath}/${loaderFile}`;
+    loader.onload = () => createUnityInstance(canvas, config, (progress) => { status.querySelector("p").textContent = `読み込み中... ${Math.round(progress * 100)}%`; }).then(() => { status.hidden = true; }).catch(() => { status.querySelector("h2").textContent = "ゲームを読み込めませんでした"; status.querySelector("p").textContent = "Buildフォルダのファイル名と配置を確認してください。"; });
+    loader.onerror = () => { status.querySelector("h2").textContent = "ゲームビルドが未登録です"; status.querySelector("p").textContent = "READMEの手順でBuildフォルダを追加するとプレイできます。"; };
+    document.head.appendChild(loader);
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
