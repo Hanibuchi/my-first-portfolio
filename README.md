@@ -35,7 +35,7 @@ HEADER（固定メニュー）／ HERO（写真・名前・ひとこと）／ AB
 4. `game.html` の `games` 設定に、ゲーム名・ビルドフォルダ・Unityの出力名を登録する
 5. `index.html` の対応するUnity作品カードを `game.html?game=登録したID` にする
 
-今回登録した `Build/whiteboard/` は `unityroom.loader.js` という出力名なので、ホワイトボードを消すゲーム用として設定済みです。圧縮出力の `.data.gz`、`.framework.js.gz`、`.wasm.gz` にも対応しています。
+今回登録した `Build/whiteboard/` は `unityroom.loader.js` という出力名で、圧縮を無効にした `.data`、`.framework.js`、`.wasm` を使うホワイトボードを消すゲーム用として設定済みです。
 
 #### `.gz` ビルドが起動しないとき
 
