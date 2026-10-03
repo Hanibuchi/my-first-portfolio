@@ -250,6 +250,29 @@ header {
   margin-bottom: 8px;
 }
 
+.work-tag-award {
+  background: #fff4d6;
+  color: #a86b00;
+}
+
+/* 画像のない作品用：ターミナル風のサムネイル */
+.work-terminal {
+  aspect-ratio: 4 / 3;
+  background: var(--dark-color);
+  color: #cfe9e8;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12.5px;
+  line-height: 1.8;
+  padding: 22px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.work-terminal .prompt { color: var(--main-color); }
+.work-terminal .dim { color: var(--sub-color); }
+.work-terminal .ok { color: #f2c14e; font-weight: bold; }
+
 /* SKILLS */
 .skill-list {
   list-style: none;
@@ -414,6 +437,7 @@ footer {
 
       <ul class="profile-list">
         <li><span class="key">所属</span><span>神戸大 工学部4年 → 大阪大学院 情報科学研究科進学予定</span></li>
+        <li><span class="key">受賞</span><span>技育ハッカソン Vol.5 最優秀賞（nanicommit）</span></li>
         <li><span class="key">資格・語学</span><span>応用情報技術者 (AP) / TOEIC 850点</span></li>
         <li><span class="key">関心分野</span><span>iOS・ゲーム開発 / エッジ・AI / ツール開発 / ネットワーク</span></li>
         <li><span class="key">趣味</span><span>個人ゲーム開発 / サイクリング / カラオケ</span></li>
@@ -430,6 +454,22 @@ footer {
     <h2 class="section-title">つくったもの</h2>
 
     <div class="work-grid">
+
+      <!-- 作品 0：nanicommit（技育ハッカソン Vol.5 最優秀賞） -->
+      <a class="work-card" href="https://github.com/kobadaidesu/nanicommit" target="_blank" rel="noopener">
+        <div class="work-terminal" aria-hidden="true">
+          <div><span class="prompt">$</span> git commit -m "キャッシュ削除処理を追加"</div>
+          <div class="dim">→ 差分から理解度チェックを生成中…</div>
+          <div>Q1. この変更で削除されるキーは？</div>
+          <div>Q2. legacy.py を残した理由は？</div>
+          <div class="ok">✓ 全問正解 — push できます</div>
+        </div>
+        <div class="work-body">
+          <span class="work-tag work-tag-award">🏆 技育ハッカソン Vol.5 最優秀賞</span>
+          <h3>nanicommit</h3>
+          <p>commitするたびに差分から理解度チェックの問題をAIが生成し、全問正解でpushを許可する学習サービス。チーム開発でバックエンドを担当し、MCP経由のGeminiによる問題生成やFastAPIのAPIを実装。</p>
+        </div>
+      </a>
 
       <!-- 作品 1：マジックビルダー（優先表示①） -->
       <a class="work-card" href="https://apps.apple.com/us/app/id6762497415">
@@ -509,6 +549,7 @@ footer {
       <li>Electron / Next.js</li>
       <li>Git / GitHub / uv</li>
       <li>SQL</li>
+      <li>MCP / Gemini API</li>
       <li>応用情報技術者 (AP)</li>
       <li>TOEIC 850点</li>
     </ul>
@@ -528,6 +569,7 @@ footer {
 
     <ul class="timeline">
       <li><span class="year">2027.04</span><span class="event">大阪大学大学院 情報科学研究科 入学予定</span></li>
+      <li><span class="year">2026.10</span><span class="event">技育ハッカソン Vol.5 にて「nanicommit」で<strong>最優秀賞</strong>を受賞（バックエンド担当）</span></li>
       <li><span class="year">2026.08</span><span class="event">Unity1weekにてシミュレーションゲーム「ホワイトボードを消すゲーム」を制作・公開</span></li>
       <li><span class="year">2026.05</span><span class="event">iOSアプリ「マジックビルダー」をApp Storeに向けてリリース・LP公開</span></li>
       <li><span class="year">2026.04</span><span class="event">デスクトップアプリ「ズレナビ」開発 / チームハッカソンにてバックエンド担当</span></li>
